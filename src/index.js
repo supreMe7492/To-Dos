@@ -1,2 +1,4 @@
 import "./styles.css";
-console.log("Hellomf");
+import {effect} from "./menueffect.js";
+
+effect();
