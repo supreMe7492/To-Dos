@@ -4,4 +4,10 @@ function showForm(){
     taskForm.classList.add("flex");
 }
 
-export {showForm};
+function removeForm(){
+    taskForm.classList.add("hidden");
+    taskForm.classList.remove("flex");
+
+}
+
+export {showForm,removeForm};

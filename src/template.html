@@ -64,14 +64,16 @@
     <div id="explorer"></div>
     <div id="taskItems"></div>
     <div id="taskForm"  class="hidden  flex-col bg-slate-300  rounded-lg">
-        <div id="formHead" class="h-1/5 w-full">
+        <div id="formHead" class="h-1/5 w-full flex justify-between items-center">
             <h1 class="mt-2 ml-9 text-2xl font-bold">Add Task</h1>
+            <i class="bi bi-x-square text-2xl font-extrabold cursor-pointer mb-6 mr-4 removeIcon"></i>
+         
         </div>
         <form action="" class="flex gap-3 flex-col h-4/5 w-4/5 ml-9 mb-2"> 
-            <input type="text" class="h-14 rounded-md" placeholder="Add Task">
-            <input type="date" class="h-14 rounded-md">
-            <input type="text" placeholder="description" class="h-14 rounded-md">
-            <select  class="h-14 rounded-md">
+            <input type="text" class="h-14 rounded-md p-3" placeholder="Add Task">
+            <input type="date" class="h-14 rounded-md p-3">
+            <input type="text" placeholder="description" class="h-14 rounded-md p-3">
+            <select  class="h-14 rounded-md p-3">
                 <option value="impertance" selected disabled>Importance</option>
                 <option value="high">High</option>
                 <option value="Medium">Medium</option>
