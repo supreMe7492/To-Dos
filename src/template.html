@@ -70,10 +70,10 @@
          
         </div>
         <form action="" class="flex gap-3 flex-col h-4/5 w-4/5 ml-9 mb-2"> 
-            <input type="text" class="h-14 rounded-md p-3" placeholder="Add Task">
-            <input type="date" class="h-14 rounded-md p-3">
-            <input type="text" placeholder="description" class="h-14 rounded-md p-3">
-            <select  class="h-14 rounded-md p-3">
+            <input type="text" id="task" class="h-14 rounded-md p-3" placeholder="Add Task">
+            <input type="date" id="date" class="h-14 rounded-md p-3">
+            <input type="text" id="description" placeholder="description" class="h-14 rounded-md p-3">
+            <select  class="h-14 rounded-md p-3" id="importance">
                 <option value="impertance" selected disabled>Importance</option>
                 <option value="high">High</option>
                 <option value="Medium">Medium</option>
@@ -81,7 +81,7 @@
             </select>
          
         </form>
-       <button class="bg-green-400 text-slate-100 h-11 rounded-md w-1/4 mb-2 ml-36 active:bg-green-600" type="button">Add</button>
+       <button class="addBtn bg-green-400 text-slate-100 h-11 rounded-md w-1/4 mb-2 ml-36 active:bg-green-600" type="button">Add</button>
 
 
 
