@@ -9,7 +9,7 @@
     <title>To-Do-List</title>
 </head>
 <body class="flex">
-  <aside id="aside" class="w-1/5 bg-gray-900 h-full text-white" >
+  <aside id="aside" class="w-1/5 bg-gray-950 h-full text-white" >
     <div class="flex  justify-center items-center h-14 font-extrabold text-2xl">
         <h1>To-Dos</h1>
     </div>
@@ -69,15 +69,17 @@
             <i class="bi bi-x-square text-xl font-extrabold cursor-pointer mb-6 mr-4 removeIcon hover:text-2xl"></i>
          
         </div>
+
+        
         <form action="" class="flex gap-3 flex-col h-4/5 w-4/5 ml-9 mb-2"> 
             <input type="text" id="task" class="h-14 rounded-md p-3" placeholder="Add Task">
             <input type="date" id="date" class="h-14 rounded-md p-3">
             <input type="text" id="description" placeholder="description" class="h-14 rounded-md p-3">
             <select  class="h-14 rounded-md p-3" id="importance">
-                <option value="impertance" selected disabled>Importance</option>
-                <option value="high">High</option>
-                <option value="Medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="importance" data-imp="1" selected class="impt" disabled>Importance</option>
+                <option value="high" data-imp="4">High</option>
+                <option value="Medium" data-imp="3"="">Medium</option>
+                <option value="low" data-imp="2">Low</option>
             </select>
          
         </form>

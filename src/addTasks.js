@@ -1,6 +1,7 @@
 import { removeForm } from "./taskform";
 
 let tasksArr = [];
+
 class tasks {
     constructor(task,date,description,importance){
         this.task = task;
@@ -17,11 +18,15 @@ function addTask(){
     let importance = document.querySelector("#importance").value;
     let todo = new tasks(task,date,description,importance);
    
-    if(!todo.task==''){
+    if(todo.task !== "" && todo.date !== ""){
     removeForm();
     tasksArr.push(todo);
 
 }
+tasksArr.forEach((a)=>{
+    console.log(a.task);
+})
+
     console.log(tasksArr);
 }
 
