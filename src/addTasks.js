@@ -30,4 +30,4 @@ tasksArr.forEach((a)=>{
     console.log(tasksArr);
 }
 
-export {addTask};
+export {addTask,tasksArr};
