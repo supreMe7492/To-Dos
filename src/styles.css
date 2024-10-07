@@ -16,7 +16,7 @@ body{
 }
 
 
-#taskForm{
+#taskForm,#showDetails{
     position: absolute;
     z-index: 100;
     height: 55%;
@@ -25,7 +25,8 @@ body{
     left: 45%;
 }
 
-#taskForm{
+
+#taskForm,#showDetails{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #explorer{
@@ -56,4 +57,24 @@ body{
 .date-disp{
     @apply  w-11/12 h-1/2  ml-2 text-sm text-blue-600 break-words flex items-center;
 
+}
+
+.task-items{
+   
+    overflow-y: auto;
+}
+
+
+.line-strike{
+    text-decoration: line-through;
+}
+
+
+.detail-icon,.del-icon{
+    @apply mt-5 mr-6 cursor-pointer active:text-slate-400
+}
+
+
+.del-icon{
+    @apply mr-12 text-xl active:text-red-600;
 }

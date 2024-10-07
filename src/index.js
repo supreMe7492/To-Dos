@@ -1,7 +1,7 @@
 import "./styles.css";
 import { render } from "./renderTasks.js";
 import {effect} from "./menueffect.js";
-import { showForm,removeForm } from "./taskform.js";
+import { showForm,removeForm,changeDetails } from "./taskform.js";
 import { addTask,tasksArr } from "./addTasks.js";
 import { myTasks } from "./myTasks.js";
 
@@ -10,10 +10,13 @@ myTasks();
 
 
 let addTaskBtn = document.querySelector(".addTasks");
-let removeIcon = document.querySelector(".removeIcon");
+let removeIcon = document.querySelectorAll(".removeIcon");
 let addBtn = document.querySelector(".addBtn");
 addTaskBtn.addEventListener("click",showForm);
-removeIcon.addEventListener("click",removeForm);
+removeIcon.forEach(a=>{
+          a.addEventListener("click",removeForm);
+});
+
 addBtn.addEventListener("click",()=>{
     addTask();
     render(tasksArr);
@@ -22,4 +25,6 @@ addBtn.addEventListener("click",()=>{
 let userTasks = document.querySelector(".myTasks");
 
 userTasks.addEventListener("click",myTasks);
+
+
 

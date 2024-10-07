@@ -31,11 +31,11 @@
     </div>
     <div id="upcoming" class="menus flex items-center h-4/5 rounded cursor-pointer gap-2 mx-3 px-3 hover:bg-slate-300 hover:bg-opacity-10 transition-all ">
         <i class="bi bi-calendar-range text-xl"></i>
-        <span class="text-xl font-thin">Upcoming</span>
+        <span class="text-xl font-thin">Weekly</span>
     </div>
     <div id="anytime" class="menus flex items-center h-4/5 rounded cursor-pointer gap-2 mx-3 px-3 hover:bg-slate-300 hover:bg-opacity-10 transition-all ">
         <i class="bi bi-alarm text-xl"></i>
-        <span class="text-xl font-thin">Anytime</span>
+        <span class="text-xl font-thin">Past Date</span>
     </div>
     <div id="priority" class="menus flex items-center h-4/5 rounded cursor-pointer gap-2 mx-3 px-3 hover:bg-slate-300 hover:bg-opacity-10 transition-all ">
         <i class="bi bi-card-list text-xl"></i>
@@ -64,7 +64,7 @@
     <div id="explorer" class="w-full h-20">
         <h1 class="exp-head text-4xl font-bold ml-6 pt-4"></h1>
     </div>
-    <div id="taskItems" class="task-items w-full h-full mt-4 flex flex-col"> </div>
+    <div id="taskItems" class="task-items w-full h-4/5 mt-4 flex flex-col"> </div>
     
     
     <div id="taskForm"  class="hidden  flex-col bg-slate-300  rounded-lg">
@@ -82,12 +82,40 @@
             <select  class="h-14 rounded-md p-3" id="importance">
                 <option value="importance" data-imp="1" selected class="impt" disabled>Importance</option>
                 <option value="high" data-imp="4">High</option>
-                <option value="Medium" data-imp="3"="">Medium</option>
+                <option value="medium" data-imp="3"="">Medium</option>
                 <option value="low" data-imp="2">Low</option>
             </select>
          
         </form>
        <button class="addBtn bg-green-400 text-slate-100 h-11 rounded-md w-1/4 mb-2 ml-36 active:bg-green-600" type="button">Add</button>
+
+
+
+    </div>  
+
+
+    <div id="showDetails"  class="hidden  flex-col bg-slate-300  rounded-lg">
+        <div id="detailHead" class="h-1/5 w-full flex justify-between items-center">
+            <h1 class="mt-2 ml-9 text-2xl font-bold">Task Detail</h1>
+            <i class="bi bi-x-square text-xl font-extrabold cursor-pointer mb-6 mr-4 removeIcon  hover:text-2xl"></i>
+         
+        </div>
+
+        
+        <form action="" class="flex gap-3 flex-col h-4/5 w-4/5 ml-9 mb-2"> 
+            <input type="text" id="taskDet" class="h-14 rounded-md p-3">
+            <input type="date" id="dateDet" class="h-14 rounded-md p-3">
+            <input type="text" id="descriptionDet" class="h-14 rounded-md p-3">
+            <select  class="h-14 rounded-md p-3" id="importanceDet">
+                <option value="importance" data-imp="1" disabled>Importance</option>
+                <option value="high" data-imp="4">High</option>
+                <option value="medium" data-imp="3"="">Medium</option>
+                <option value="low" data-imp="2">Low</option>
+            </select>
+         
+        </form>
+        <button class="changeBtn bg-green-400 text-slate-100 h-11 rounded-md w-1/4 mb-2 ml-36 active:bg-green-600" type="button">Save Changes</button>
+
 
 
 
