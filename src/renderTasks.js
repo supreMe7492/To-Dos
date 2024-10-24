@@ -1,13 +1,24 @@
 import {differenceInDays,startOfDay } from 'date-fns';
 import { showDetails,changeDetails } from './taskform';
+import { addTask } from './addTasks';
+import { tasksArr } from './addTasks';
+import { deleteTasks } from './updateTasks';
 
 let taskItems = document.querySelector(".task-items");
+let addBtn = document.querySelector(".addBtn");
+let changeBtn = document.querySelector(".changeBtn");
 
 
-function render(tasksArr){
+
+function render(listArr){
+    
     taskItems.innerHTML = ``;
+  
+listArr.forEach((todos,i)=>{
+    const taskArrIndex = tasksArr.indexOf(todos);  
 
-tasksArr.forEach((todos,i)=>{
+
+
     let tasks = document.createElement("div");
     tasks.classList.add("tasks");
     taskItems.append(tasks);
@@ -65,7 +76,7 @@ tasksArr.forEach((todos,i)=>{
 
      let dateSpan = document.createElement("span");
         const today = startOfDay(new Date());
-        const remainingDays = differenceInDays(startOfDay(todos.date),today);
+        const remainingDays = differenceInDays(startOfDay(new Date(todos.date)),today);
 
         if(remainingDays>0){
             dateSpan.textContent = `remaining : ${remainingDays} days`;
@@ -86,8 +97,9 @@ tasksArr.forEach((todos,i)=>{
      tasks.append(delIcon);
         
       delIcon.addEventListener("click",()=>{
-        tasksArr.splice(i,1);
-        render(tasksArr);
+        deleteTasks(taskArrIndex);
+        console.log(taskArrIndex);
+        tasks.remove();
       })
 
 
@@ -95,29 +107,26 @@ tasksArr.forEach((todos,i)=>{
      detailIcon.classList.add("bi","bi-three-dots","detail-icon");
      tasks.append(detailIcon);
         
-
-     detailIcon.addEventListener("click",()=>{
-        showDetails(todos);
-
-        let changeDetailsBtn = document.querySelector(".changeBtn");
-        changeDetailsBtn.addEventListener("click",()=>{
-         changeDetails(todos);
-         render(tasksArr);
-     })
-
-
       
-       })
-
-
-
-
-
-
-
-
+     detailIcon.addEventListener("click",()=>{
+       showDetails(todos, taskArrIndex); 
+     })
 })
- }
 
+
+changeBtn.addEventListener("click",()=>{
+    changeDetails();
+    render(listArr);
+})
+ 
+
+}
+
+
+
+ addBtn.addEventListener("click",()=>{
+    addTask();
+   
+ });
 
  export {render};

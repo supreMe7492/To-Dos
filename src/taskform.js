@@ -1,6 +1,8 @@
+import { tasksArr } from "./addTasks";
 let taskForm = document.querySelector("#taskForm");
 let detailForm = document.querySelector("#showDetails");
 
+let selected = null;
 function showForm(){
     let task = document.querySelector("#task");
     let date = document.querySelector("#date");
@@ -14,7 +16,7 @@ function showForm(){
     taskForm.classList.add("flex");
 }
 
-function showDetails(item){
+function showDetails(item,index){
     let taskDet = document.querySelector("#taskDet");
     let dateDet = document.querySelector("#dateDet");
     let descriptionDet = document.querySelector("#descriptionDet");
@@ -22,8 +24,7 @@ function showDetails(item){
 
    
         taskDet.value = item.task;
-        dateDet.value = item.date;
-
+        dateDet.value = new Date(item.date).toISOString().slice(0, 10);
         if(item.description == ""){
             descriptionDet.placeholder = "Add a Description";
         }else{
@@ -39,22 +40,25 @@ function showDetails(item){
     detailForm.classList.remove("hidden");
     detailForm.classList.add('flex');
 
+     selected = index;
+    console.log(selected) ;
+
 }
 
-function changeDetails(item){
-    let taskDet = document.querySelector("#taskDet");
-    let dateDet = document.querySelector("#dateDet");
-    let descriptionDet = document.querySelector("#descriptionDet");
-    let importanceDet = document.querySelector("#importanceDet");
+function changeDetails(){
+    let taskDet = document.querySelector("#taskDet").value;
+    let dateDet = document.querySelector("#dateDet").value;
+    let descriptionDet = document.querySelector("#descriptionDet").value;
+    let importanceDet = document.querySelector("#importanceDet").value;
 
-   
-        item.task = taskDet.value;
-        item.date = new Date(dateDet.value);
-        item.description = descriptionDet.value;
-        item.importance = importanceDet.value;
-  
+    if(selected !== null){
+        tasksArr[selected].task = taskDet;
+        tasksArr[selected].date = new Date(dateDet);
+        tasksArr[selected].description = descriptionDet;
+        tasksArr[selected].importance = importanceDet;
 
-    removeForm();
+    }
+   removeForm();
 }
 
 function removeForm(){

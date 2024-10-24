@@ -5,7 +5,7 @@ let tasksArr = [];
 class tasks {
     constructor(task,date,description,importance){
         this.task = task;
-        this.date = date;
+        this.date = new Date(date);
         this.description = description;
         this.importance = importance;
     }
@@ -23,11 +23,8 @@ function addTask(){
     tasksArr.push(todo);
 
 }
-tasksArr.forEach((a)=>{
-    console.log(a.task);
-})
 
-    console.log(tasksArr);
+
 }
 
 export {addTask,tasksArr};
