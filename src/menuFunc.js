@@ -87,7 +87,7 @@ function pastTask(){
 const imprtanceOrder = {high:1, medium:2, low:3};
 
 function importantTask(){
-    let importantTaskArr = tasksArr.filter(task=>task.importance !== "importance").sort((a,b)=> imprtanceOrder[a.importance] - imprtanceOrder[b.importance] && task.projectName === "projectOption" || task.projectName === "");
+    let importantTaskArr = tasksArr.filter(task=>task.importance !== "importance" && task.projectName === "projectOption" || task.projectName === "").sort((a,b)=> imprtanceOrder[a.importance] - imprtanceOrder[b.importance]);
 
     
     let expHead = document.querySelector(".exp-head");
