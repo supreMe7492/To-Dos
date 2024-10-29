@@ -1,8 +1,10 @@
 import {differenceInDays,startOfDay } from 'date-fns';
-import { showDetails,changeDetails } from './taskform';
+import { effect } from './menueffect';
+import { showDetails,changeDetails,showProjectDetails } from './taskform';
 import { addTask } from './addTasks';
-import { tasksArr } from './addTasks';
-import { deleteTasks } from './updateTasks';
+import { tasksArr,projectArr,saveToLocalStorage } from './addTasks';
+import { projectTask} from './menuFunc';
+import { deleteTasks,deleteProject } from './updateTasks';
 
 let taskItems = document.querySelector(".task-items");
 let addBtn = document.querySelector(".addBtn");
@@ -46,6 +48,7 @@ listArr.forEach((todos,i)=>{
      checkInput.type = "checkbox";
      checkInput.classList.add("check-input");
      checkSpan.append(checkInput);
+     checkInput.checked = todos.completed;
      
 
      let dateTask = document.createElement("div");
@@ -57,12 +60,21 @@ listArr.forEach((todos,i)=>{
      taskDisp.classList.add("task-disp");
      dateTask.append(taskDisp);
 
+     if(todos.completed){
+
+        dateTask.classList.add("line-strike");
+
+
+     }
+
      checkInput.addEventListener('change', function () {
+        todos.completed = this.checked;
         if (this.checked) {
             dateTask.classList.add("line-strike");
         } else {
             dateTask.classList.remove("line-strike");
         }
+        saveToLocalStorage("tasksArr", tasksArr);
     });
 
 
@@ -107,7 +119,6 @@ listArr.forEach((todos,i)=>{
      detailIcon.classList.add("bi","bi-three-dots","detail-icon");
      tasks.append(detailIcon);
         
-      
      detailIcon.addEventListener("click",()=>{
        showDetails(todos, taskArrIndex); 
      })
@@ -122,6 +133,63 @@ changeBtn.addEventListener("click",()=>{
 
 }
 
+let selectedProject = null;
+
+function renderProjectMenu(){
+    let projectItems = document.querySelector(".project-items");
+    projectItems.innerHTML = ``;
+    projectArr.forEach((project,i)=>{
+        let projectMenus = document.createElement("div");
+        projectMenus.classList.add("project-menus","menus");
+        projectItems.append(projectMenus);
+
+        let folderIcon = document.createElement("i");
+        folderIcon.classList.add("bi","bi-folder2","text-xl");
+        projectMenus.append(folderIcon);
+
+        let projectSpan = document.createElement("span");
+        projectSpan.classList.add("project-span");
+        projectSpan.textContent = project.projectName;
+        selectedProject = projectSpan.textContent;
+        projectMenus.append(projectSpan);
+        
+        projectMenus.addEventListener("click",()=>{
+            projectTask(projectSpan.textContent);
+        })
+    let projectDeleteIcon = document.createElement("i");
+    projectDeleteIcon.classList.add("bi", "bi-trash", "mr-4","active:text-red-500");
+    projectDeleteIcon.addEventListener('click',()=>{
+        deleteProject(i);
+        projectMenus.remove(); 
+      
+    })
+    projectMenus.append(projectDeleteIcon);
+
+    let projectDetailsIcon = document.createElement("i");
+    projectDetailsIcon.classList.add("bi", "bi-three-dots","active:text-green-500");
+    projectDetailsIcon.addEventListener("click",()=>{
+        showProjectDetails(project);
+    });
+    projectMenus.append(projectDetailsIcon)
+    saveToLocalStorage("projectArr",projectArr);
+
+    })
+    
+    effect();
+}
+
+function projectOption(addOption){
+    addOption.innerHTML = `<option value="projectOption" id="projectSelectDefault" disabled>Project</option>`
+    //let detailOption = document.querySelector("#projectDetSelect");
+    //detailOption.innerHTML = `<option value="projectOption"  disabled>Project</option>`
+    projectArr.forEach(project=>{
+         let selectOption = document.createElement("option");
+         selectOption.textContent = project.projectName;
+         selectOption.value = project.projectName;
+         addOption.append(selectOption);
+        //detailOption.append(selectOption);
+    })
+}
 
 
  addBtn.addEventListener("click",()=>{
@@ -129,4 +197,4 @@ changeBtn.addEventListener("click",()=>{
    
  });
 
- export {render};
+ export {render,renderProjectMenu,projectOption,selectedProject};

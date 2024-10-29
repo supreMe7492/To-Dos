@@ -1,5 +1,5 @@
-let menus = document.querySelectorAll('.menus');
 function effect(){
+    let menus = document.querySelectorAll('.menus');
     
     menus.forEach((menu)=>{
     menu.addEventListener('click',()=>{

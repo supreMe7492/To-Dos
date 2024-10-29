@@ -13,20 +13,31 @@ body,html{
 }
 body{
     overflow: hidden;
+    font-family: 'Caveat', sans-serif;
 }
 
 
 #taskForm,#showDetails{
     position: absolute;
     z-index: 100;
-    height: 55%;
+    height: 64%;
     width: 30%;
-    top: 20%;
+    top: 18%;
     left: 45%;
 }
 
+#projectForm,#showprojectDetails {
+    position: absolute;
+    z-index: 100;
+    height: 37%;
+    width: 25%;
+    top: 28%;
+    left: 45%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
 
-#taskForm,#showDetails{
+
+#taskForm,#showDetails,#projectForm{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #explorer{
@@ -36,6 +47,8 @@ body{
 .tasks{
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     @apply w-11/12 h-16 m-3 flex;
+    font-family:  sans-serif;
+
 }
 .check-span{
     @apply h-full w-10 flex items-center;
@@ -59,8 +72,8 @@ body{
 
 }
 
-.task-items{
-   
+.task-items,.project-items{
+   overflow-x: hidden;
     overflow-y: auto;
 }
 
@@ -77,4 +90,18 @@ body{
 
 .del-icon{
     @apply mr-12 text-xl active:text-red-600;
+}
+
+form,button{
+    font-family: sans-serif;
+}
+
+.project-menus{
+    @apply  flex items-center h-10 mb-2 rounded cursor-pointer gap-2 mx-3 px-3 hover:bg-slate-300 hover:bg-opacity-10 transition-all;
+}
+.project-span{
+    @apply text-xl w-40 font-thin;
+}
+.check-input{
+    accent-color: rgb(24, 180, 24);
 }
